@@ -1,0 +1,89 @@
+首先记录一个问题，在配置loader css过程中，
+    module: {
+        //  规则数组，里面的每一个对象都是一个loader，loader可以讲不同文件从不同的语言转为js，获奖内联图像转换为dataURL，成为webpack能识别的文件
+        rules: [
+            {
+                test:/\.css$/,
+                use:[
+                    'style-loader',
+                    'css-loader',
+                ]
+            },
+        ]
+    },
+    首先要安装style-loader与css-loader npm install style-loader css-loader -g/--save-dev //选择全局还是项目中 
+    style-loader与css-loader的顺序不能乱,如果吧css-loader放到前面，就会报错。
+    style-loader的作用是在需要载入的html中创建一个<style></style>标签，标签里的内容就是css内容
+    css-loader的作用是允许在js中import一个css文件，把css文件当成一个模块引入到js中，
+    loader的加载顺序是从右往左，不是我们理解的从左往右。也就是先加载css-loader，把我们引入的css代码编译，然后交给style-loader获取这些样式，
+    创建<style></style>标签，所以需要style-loader在css-loader的左面，也就是前面。
+    碰到loader的错误，就详细解释一下loader。
+一:loader的特性
+    1:loader支持链式传递，能够对资源使用流水线。一组链式的loader将按照相反的顺序执行,loader链中的第一个loader返回值给下一个loader,
+    在最后一个loader，返回webpack所预期的javascript
+    2:loader可以是同步的，也可以是异步的
+    3:loader运行在Node.js中，并且能够执行任何可能的操作。
+    4:loader接受查询参数，用于对loader配置查询
+    5:loader也能够使用options对象进行配置
+    6:除了使用package.json中的main，还可以将普通的npm模块导出为loader,做法是在package.json里定义一个loader字段
+    7:插件可以为loader带来更多特性
+    8:loader能够产生额外的任意文件。
+二:设置一个loader
+    1:本地开发测试的三种loader使用方法。配置，内联，cli。直接在webpack中配置是最推荐的。直接在module.rules中配置每个对象。
+            rules: [
+            {
+                test:/\.css$/,
+                use:[
+                    'style-loader',
+                    'css-loader',
+                ]
+            },
+        ]
+    2:常用loader
+        2.1:样式
+            2.1.1:css-loader:解析css文件中的代码
+            2.1.2:style-loader:将css模块作为样式导出到DOM
+            2.1.3:less-loader:加载和转义less文件
+            2.1.4:sass-loader:加载和转义sass/scss文件
+        2.2:脚本转换编译
+            2.2.1:sceipt-loader:在全局上下文中执行一次javascript文件，不需要解析
+            2.2.2:babel-loader:加载es6代码后使用babel转义为es5后浏览器才能解析
+        2.3:Files文件
+            2.3.1:url-loader:多数用于加载图片资源，超过文件大小显示则返回data url
+            2.3.2:raw-loader:加载文件原始内容(utf-8格式)
+        2.4:加载框架
+            2.4.1:vue-loader:加载和转义vue组件
+            2.4.2:react-hot-loader:动态刷新和转义react组件修改的部分
+
+看了下关于命名的问题。
+    1:变量命名
+        小驼峰式命名，首字母小写，前缀为形容词
+    2:常量命名
+        名词全部大写，用下划线来分割单词
+    3:函数
+        小驼峰式命名，前缀为动词，应该有常用动词越大，比如：isXxx，判断是否为某个值
+        can:判断是否可执行某个动作
+        has:判断是否含义某个值
+        is:判断是否为某个值
+        get:获取某个值
+        set:设置某个值
+        load:加载某些数据
+    4:类&构造函数
+        大写驼峰式命名，首字母大写，私有属性和方法，前缀加_
+    5:注释规范
+        5.1:单行注释 //
+        5.2:多行注释
+            /*
+             *代码执行到这里会调用XX函数
+             *XX函数的功能
+             */
+        5.3:函数注释
+            /**
+             *函数说明
+             *@参数
+             *@关键字
+             **/
+        @param{参数类型}描述信息
+        @return{参数类型}描述信息
+        @author 描述信息
+        @example 示例代码
