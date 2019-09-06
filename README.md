@@ -1,5 +1,5 @@
 # Learn Webpack
-## weboack模块化开发学习1:webpack基本核心概念理解，与安装webpack遇到的问题。
+## webpack模块化开发学习1:webpack基本核心概念理解，与安装webpack遇到的问题。
 1. 首先你需要有node与npm，如果没有就先下一个吧。
 2. 当前我的环境是mac系统，我先说一下我的问题吧，就是npm install -g webpack 之后，我现在是安装成功了。
 不过我这个webpack -v 的时候出现的是bash:webpack command not found。
