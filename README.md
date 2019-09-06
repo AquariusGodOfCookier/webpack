@@ -9,5 +9,5 @@ npm config set cache "/usr/local/node_cache"
 4. 把我的全局模块都有个家以后，重新安装webpack，进入到webpack目录下，webpack -v 还是webpack command not found
 5. 中途报了个错，大致就是我没有node_global的写权限，ls -l发现当前所有者是root，就把所有者改为自己，并且允许读写操作。
 6. echo $PATH 没有npm的环境变量。就把/usr/local/node_global/bin写入到环境变量，具体写法这个可以自行百度，不同系统不一样，这个不是问题的难点。
-7. 运行webpack -v就能够正常运行。
+7. 运行webpack -v查看是否出现版本号，出现就能够正常使用了。
 
