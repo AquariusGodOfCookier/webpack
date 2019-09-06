@@ -1,0 +1,33 @@
+{
+  "name": "learn_webpack",
+  "version": "1.0.0",
+  "description": "use learn webpack",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuipingshihen/webpack.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "dong.sun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shuipingshihen/webpack/issues"
+  },
+  "homepage": "https://github.com/shuipingshihen/webpack#readme",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
+  }
+}
